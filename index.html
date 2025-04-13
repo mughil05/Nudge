@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roamio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Roamio helps students navigate campus, find events, and locate essentials instantly." />
+  <meta property="og:title" content="Roamio – Revolutionize Your Campus Experience" />
+  <meta property="og:description" content="Real-time navigation, accessibility, and student events – all in one app." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/aryashahprog/logo.png/6591f83c05a76963dc843bb999e44e766b68a07a/Untitled%20design.png" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * {
@@ -12,6 +17,9 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
+    }
+    html {
+      color-scheme: light dark;
     }
     body {
       font-family: 'Inter', sans-serif;
@@ -25,15 +33,16 @@
       animation: fadeIn 1.5s ease-out;
     }
     header h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      letter-spacing: -0.05em;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
       margin-bottom: 0.75rem;
     }
     header p {
-      font-size: 1.1rem;
-      max-width: 600px;
+      font-size: 1.2rem;
+      max-width: 620px;
       margin: 0 auto;
+      font-weight: 400;
     }
     .waitlist {
       max-width: 90%;
@@ -53,7 +62,8 @@
       transform: translateY(0);
     }
     .waitlist h2 {
-      font-size: 1.75rem;
+      font-size: 1.8rem;
+      font-weight: 600;
       margin-bottom: 1rem;
     }
     .waitlist p {
@@ -96,6 +106,30 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #0033cc;
+    }
+    .partners {
+      background-color: #ffffff;
+      color: #1d1d1f;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .partners h3 {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0.8;
+    }
+    .logo {
+      font-size: 1rem;
+      background-color: #eaeaea;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
     }
     .slider {
       max-width: 100%;
@@ -209,6 +243,15 @@
     </div>
   </section>
 
+  <section class="partners">
+    <h3>Coming Soon To:</h3>
+    <div class="logos">
+      <div class="logo">Georgia State University</div>
+      <div class="logo">Georgia Tech</div>
+      <div class="logo">UGA</div>
+    </div>
+  </section>
+
   <div class="slider">
     <div class="slide">
       <p>“Been here for 2 years and I still can’t find CN2101 every time.”</p>
@@ -253,3 +296,4 @@
   </script>
 </body>
 </html>
+
