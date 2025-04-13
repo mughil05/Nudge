@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roamio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papLFu9VtkwU1kq8BvFt2ZOkQ8+TOfOnXJUmvZClztN4gX9KiGZPOMIUX7wguv/Zc1QXZ+Pg9lgMZ1xqc3Kpcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * {
       margin: 0;
@@ -15,8 +15,8 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f5f5f7;
-      color: #1d1d1f;
+      background: linear-gradient(to bottom right, #e6f0ff, #fff0f5);
+      color: #0033cc; /* Roamio blue */
       line-height: 1.6;
     }
     header {
@@ -33,7 +33,6 @@
       font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto;
-      color: #6e6e73;
     }
     .waitlist {
       max-width: 90%;
@@ -46,6 +45,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-in-out;
+      color: #1d1d1f;
     }
     .waitlist.visible {
       opacity: 1;
@@ -58,10 +58,9 @@
     .waitlist p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
-      color: #4d4d50;
     }
     .waitlist a button {
-      background-color: #1d1d1f;
+      background-color: #0033cc;
       color: white;
       padding: 1rem 2rem;
       font-size: 1rem;
@@ -73,7 +72,7 @@
       max-width: 250px;
     }
     .waitlist a button:hover {
-      background-color: #000;
+      background-color: #001f80;
     }
     .slider {
       max-width: 100%;
@@ -81,7 +80,7 @@
       display: flex;
       gap: 1rem;
       padding: 2rem 1rem;
-      background: #fff;
+      background: white;
       scroll-snap-type: x mandatory;
     }
     .slide {
@@ -93,10 +92,10 @@
       border-radius: 16px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.05);
       scroll-snap-align: center;
+      color: #1d1d1f;
     }
     .slide p {
       font-size: 1rem;
-      color: #333;
     }
     footer {
       display: flex;
@@ -104,16 +103,15 @@
       gap: 1.5rem;
       align-items: center;
       padding: 2rem 1rem;
-      background-color: #f5f5f7;
       flex-wrap: wrap;
     }
     footer a {
-      color: #1d1d1f;
+      color: #0033cc;
       font-size: 1.5rem;
       transition: color 0.3s ease;
     }
     footer a:hover {
-      color: #0a2540;
+      color: #001f80;
     }
     @media (max-width: 600px) {
       header h1 {
@@ -131,7 +129,7 @@
 <body>
   <header>
     <h1>Roamio</h1>
-    <p>Revolutionizing the way students navigate campus - one step at a time.</p>
+    <p>Revolutionizing the way students navigate campus — one step at a time.</p>
   </header>
 
   <div class="waitlist" id="waitlist">
