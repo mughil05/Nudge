@@ -3,92 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roamio Waitlist</title>
+  <title>Roamio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papLFu9VtkwU1kq8BvFt2ZOkQ8+TOfOnXJUmvZClztN4gX9KiGZPOMIUX7wguv/Zc1QXZ+Pg9lgMZ1xqc3Kpcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      color: #111827;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
       line-height: 1.6;
     }
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #f5f5f7;
+      z-index: 1000;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+    }
+    nav h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    nav .icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    nav .icons a {
+      font-size: 1.2rem;
+      color: #1d1d1f;
+      transition: color 0.3s ease;
+    }
+    nav .icons a:hover {
+      color: #0a2540;
+    }
     header {
-      background-color: #0a2540;
-      color: white;
-      padding: 4rem 1.5rem;
       text-align: center;
+      padding: 5rem 1rem 2rem;
     }
     header h1 {
-      font-size: 2.75rem;
-      margin-bottom: 0.5rem;
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      margin-bottom: 0.75rem;
     }
     header p {
-      font-size: 1.25rem;
-    }
-    .container {
+      font-size: 1.1rem;
       max-width: 600px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      margin: 0 auto;
+      color: #6e6e73;
     }
     .waitlist {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      max-width: 90%;
+      background: white;
+      margin: 4rem auto;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-in-out;
+    }
+    .waitlist.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .waitlist h2 {
       font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-    }
-    .waitlist input[type="email"] {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 300px;
       margin-bottom: 1rem;
     }
-    .waitlist button {
-      background-color: #0a2540;
+    .waitlist p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #4d4d50;
+    }
+    .waitlist a button {
+      background-color: #1d1d1f;
       color: white;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      font-weight: 600;
+      transition: background 0.3s ease;
+      width: 100%;
+      max-width: 250px;
+    }
+    .waitlist a button:hover {
+      background-color: #000;
     }
     footer {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      align-items: center;
       padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #6b7280;
+      background-color: #f5f5f7;
+      flex-wrap: wrap;
     }
-    a { color: #0a2540; text-decoration: none; font-weight: 600; }
+    footer a {
+      color: #1d1d1f;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #0a2540;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .waitlist h2 {
+        font-size: 1.4rem;
+      }
+      .waitlist p {
+        font-size: 0.95rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav .icons {
+        margin-top: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <h2>roam.io</h2>
+    <div class="icons">
+      <a href="mailto:roamio.atl@gmail.com" title="Email Us">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://instagram.com/roamio.atl" target="_blank" title="Follow on Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </nav>
+
   <header>
     <h1>Roamio</h1>
-    <p>Navigate Campus. Connect Instantly.</p>
+    <p>Revolutionizing the way students navigate campus</p>
   </header>
 
-  <div class="container">
-    <section class="waitlist">
-      <h2>Join the Waitlist</h2>
-      <p>Get early access to Roamio before launch. We'll send updates straight to your inbox.</p>
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLSdXEXAMPLELINK/formResponse" method="POST" target="_blank">
-        <input type="email" name="entry.1234567890" placeholder="Enter your email" required>
-        <br />
-        <button type="submit">Join Now</button>
-      </form>
-    </section>
+  <div class="waitlist" id="waitlist">
+    <h2>Join Our Waitlist</h2>
+    <p>Be among the first to explore your campus the Roamio way. We’ll notify you when we launch!</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSemCfNj6bVxx-LfqRmp_egjKl9E3CfkM3KaJG9ZN6cLaaRY_w/viewform" target="_blank">
+      <button>Join the Waitlist</button>
+    </a>
   </div>
 
   <footer>
-    &copy; 2025 Roamio • <a href="mailto:roamio.atl@gmail.com">roamio.atl@gmail.com</a><br>
-    Follow us on <a href="https://instagram.com/roamio.atl" target="_blank">@roamio.atl</a>
+    <a href="mailto:roamio.atl@gmail.com" title="Email Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://instagram.com/roamio.atl" target="_blank" title="Follow on Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
   </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const waitlist = document.getElementById('waitlist');
+      const triggerPoint = window.innerHeight * 0.8;
+      const elementTop = waitlist.getBoundingClientRect().top;
+
+      if (elementTop < triggerPoint) {
+        waitlist.classList.add('visible');
+      }
+    });
+  </script>
 </body>
 </html>
