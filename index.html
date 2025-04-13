@@ -22,6 +22,7 @@
     header {
       text-align: center;
       padding: 5rem 1rem 2rem;
+      animation: fadeIn 1.5s ease-out;
     }
     header h1 {
       font-size: 3rem;
@@ -74,6 +75,28 @@
     .waitlist a button:hover {
       background-color: #001f80;
     }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 1rem;
+      background-color: #002db3;
+    }
+    .feature-card {
+      background-color: #ffffff;
+      color: #1d1d1f;
+      padding: 1.5rem;
+      border-radius: 16px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .feature-card i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0033cc;
+    }
     .slider {
       max-width: 100%;
       overflow-x: auto;
@@ -82,6 +105,7 @@
       padding: 2rem 1rem;
       background: #002db3;
       scroll-snap-type: x mandatory;
+      animation: slideIn 1s ease;
     }
     .slide {
       flex: 0 0 auto;
@@ -96,6 +120,25 @@
     }
     .slide p {
       font-size: 1rem;
+    }
+    .sticky-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffffff;
+      color: #0033cc;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+    .sticky-button:hover {
+      background-color: #e6e6e6;
     }
     footer {
       display: flex;
@@ -124,6 +167,14 @@
         font-size: 0.95rem;
       }
     }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
   </style>
 </head>
 <body>
@@ -139,6 +190,24 @@
       <button>Join the Waitlist</button>
     </a>
   </div>
+
+  <section class="features">
+    <div class="feature-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Real-Time Navigation</h3>
+      <p>Find your classes, events, and facilities across multiple campuses instantly.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-wheelchair"></i>
+      <h3>Accessibility First</h3>
+      <p>We show the best routes for students with disabilities including elevators and ramps.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-calendar-check"></i>
+      <h3>Event Discovery</h3>
+      <p>Never miss out — discover and navigate to student events in real time.</p>
+    </div>
+  </section>
 
   <div class="slider">
     <div class="slide">
@@ -157,6 +226,10 @@
       <p>“Every semester I struggle to find my classrooms again. Roamio would save me!”</p>
     </div>
   </div>
+
+  <button class="sticky-button" onclick="document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });">
+    Join Waitlist
+  </button>
 
   <footer>
     <a href="mailto:roamio.atl@gmail.com" title="Email Us">
