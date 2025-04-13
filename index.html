@@ -75,6 +75,29 @@
     .waitlist a button:hover {
       background-color: #000;
     }
+    .slider {
+      max-width: 100%;
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+      padding: 2rem 1rem;
+      background: #fff;
+      scroll-snap-type: x mandatory;
+    }
+    .slide {
+      flex: 0 0 auto;
+      min-width: 300px;
+      max-width: 90%;
+      padding: 1.5rem;
+      background-color: #f0f0f3;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      scroll-snap-align: center;
+    }
+    .slide p {
+      font-size: 1rem;
+      color: #333;
+    }
     footer {
       display: flex;
       justify-content: center;
@@ -108,7 +131,7 @@
 <body>
   <header>
     <h1>Roamio</h1>
-    <p>Revolutionizing the way students navigate campus — one step at a time.</p>
+    <p>Revolutionizing the way students navigate campus - one step at a time.</p>
   </header>
 
   <div class="waitlist" id="waitlist">
@@ -117,6 +140,24 @@
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSemCfNj6bVxx-LfqRmp_egjKl9E3CfkM3KaJG9ZN6cLaaRY_w/viewform" target="_blank">
       <button>Join the Waitlist</button>
     </a>
+  </div>
+
+  <div class="slider">
+    <div class="slide">
+      <p>“Been here for 2 years and I still can’t find CN2101 every time.”</p>
+    </div>
+    <div class="slide">
+      <p>“Missed my club meeting again because I couldn’t find the right event room.”</p>
+    </div>
+    <div class="slide">
+      <p>“Where are the microwaves on this campus?? Seriously.”</p>
+    </div>
+    <div class="slide">
+      <p>“I wish someone would just show me the fastest route to the Financial Aid office.”</p>
+    </div>
+    <div class="slide">
+      <p>“Every semester I struggle to find my classrooms again. Roamio would save me!”</p>
+    </div>
   </div>
 
   <footer>
@@ -141,4 +182,3 @@
   </script>
 </body>
 </html>
-
