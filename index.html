@@ -42,13 +42,21 @@
     }
     .waitlist {
       max-width: 90%;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
       margin: 4rem auto;
       padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
       text-align: center;
       color: #1d1d1f;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    .waitlist.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .waitlist h2 {
       font-size: 1.75rem;
@@ -104,7 +112,7 @@
       background-color: #ffffff;
       color: #1d1d1f;
       padding: 1.5rem;
-      border-radius: 16px;
+      border-radius: 20px;
       width: 280px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -173,10 +181,11 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       z-index: 1000;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
     .sticky-button:hover {
       background-color: #e6e6e6;
+      transform: translateY(-2px);
     }
     footer {
       display: flex;
@@ -194,6 +203,17 @@
     footer a:hover {
       color: #cce0ff;
     }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .waitlist h2 {
+        font-size: 1.4rem;
+      }
+      .waitlist p {
+        font-size: 0.95rem;
+      }
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -203,7 +223,7 @@
 <body>
   <header>
     <h1>Roamio</h1>
-    <p>Revolutionizing the way students navigate campus — one step at a time.</p>
+    <p>Revolutionizing campus navigation</p>
   </header>
 
   <div class="waitlist" id="waitlist">
@@ -293,6 +313,16 @@
       } else {
         confirmation.innerText = "❌ Something went wrong. Try again later.";
         confirmation.style.color = 'red';
+      }
+    });
+
+    // Scroll-triggered animation for waitlist
+    window.addEventListener('scroll', () => {
+      const waitlist = document.getElementById('waitlist');
+      const triggerPoint = window.innerHeight * 0.8;
+      const elementTop = waitlist.getBoundingClientRect().top;
+      if (elementTop < triggerPoint) {
+        waitlist.classList.add('visible');
       }
     });
   </script>
