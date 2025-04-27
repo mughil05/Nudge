@@ -1,330 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roamio</title>
-  <meta name="description" content="Roamio helps students navigate campus, find events, and locate essentials instantly." />
-  <meta property="og:title" content="Roamio – Revolutionize Your Campus Experience" />
-  <meta property="og:description" content="Real-time navigation, accessibility, and student events – all in one app." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/aryashahprog/logo.png/6591f83c05a76963dc843bb999e44e766b68a07a/Untitled%20design.png" />
-  <meta property="og:url" content="https://yourdomain.com" />
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Roamio</title>  
+  <meta name="description" content="Roamio helps students navigate campus, find events, and locate essentials instantly.">  
+  <meta property="og:title" content="Roamio – Revolutionize Your Campus Experience">  
+  <meta property="og:description" content="Real-time navigation, accessibility, and student events – all in one app.">  
+  <meta property="og:image" content="https://raw.githubusercontent.com/aryashahprog/logo.png/6591f83c05a76963dc843bb999e44e766b68a07a/Untitled%20design.png">  
+  <meta property="og:url" content="https://yourdomain.com">  
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'] }
+        }
+      }
+    };
+  </script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0033cc;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 5rem 1rem 2rem;
-      animation: fadeIn 1.5s ease-out;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.75rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-    .waitlist {
-      max-width: 90%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      margin: 4rem auto;
-      padding: 2rem;
-      border-radius: 28px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      color: #1d1d1f;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease-out;
-    }
-    .waitlist.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .waitlist h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    .waitlist p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .waitlist form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .waitlist label {
-      display: none;
-    }
-    .waitlist input[type="email"] {
-      padding: 1rem;
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .waitlist button {
-      background-color: #0033cc;
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .waitlist button:hover {
-      background-color: #001f80;
-    }
-    .confirmation {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 3rem 1rem;
-      background-color: #002db3;
-    }
-    .feature-card {
-      background-color: #ffffff;
-      color: #1d1d1f;
-      padding: 1.5rem;
-      border-radius: 20px;
-      width: 280px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .feature-card i {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #0033cc;
-    }
-    .partners {
-      background-color: #ffffff;
-      color: #1d1d1f;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    .partners h3 {
-      font-size: 1.6rem;
-      margin-bottom: 2rem;
-    }
-    .logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .logos div {
-      background: #f5f5f5;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: 600;
-    }
-    .slider {
-      max-width: 100%;
-      overflow-x: auto;
-      display: flex;
-      gap: 1rem;
-      padding: 2rem 1rem;
-      background: #002db3;
-      scroll-snap-type: x mandatory;
-    }
-    .slide {
-      flex: 0 0 auto;
-      min-width: 300px;
-      max-width: 90%;
-      padding: 1.5rem;
-      background-color: #ffffff;
-      color: #1d1d1f;
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
-      scroll-snap-align: center;
-    }
-    .slide p {
-      font-size: 1rem;
-    }
-    .sticky-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #ffffff;
-      color: #0033cc;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 1000;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .sticky-button:hover {
-      background-color: #e6e6e6;
-      transform: translateY(-2px);
-    }
-    footer {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 2rem 1rem;
-      flex-wrap: wrap;
-    }
-    footer a {
-      color: #ffffff;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
-    }
-    footer a:hover {
-      color: #cce0ff;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .waitlist h2 {
-        font-size: 1.4rem;
-      }
-      .waitlist p {
-        font-size: 0.95rem;
-      }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .fade-in { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Roamio</h1>
-    <p>Revolutionizing campus navigation</p>
-  </header>
+<body class="font-sans bg-blue-600 text-white antialiased">
 
-  <div class="waitlist" id="waitlist">
-    <h2>Join Our Waitlist</h2>
-    <p>Be among the first to explore your campus the Roamio way. We’ll notify you when we launch!</p>
-    <form id="emailForm">
-      <label for="emailInput">Email address</label>
-      <input type="email" id="emailInput" name="email" placeholder="Your email address" required />
-      <button type="submit">Join the Waitlist</button>
-    </form>
-    <p class="confirmation" id="confirmation"></p>
-  </div>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-blue-700 bg-opacity-75 backdrop-blur-sm z-50 py-4">
+    <div class="container mx-auto px-6 text-center">
+      <span class="text-white text-xl font-semibold">Roamio</span>
+    </div>
+  </nav>
 
-  <section class="features">
-    <div class="feature-card">
-      <i class="fas fa-map-marker-alt"></i>
-      <h3>Real-Time Navigation</h3>
-      <p>Find your classes, events, and facilities across multiple campuses instantly.</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-wheelchair"></i>
-      <h3>Accessibility First</h3>
-      <p>We highlight the most accessible routes for students, including paths with elevators and ramps..</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-calendar-check"></i>
-      <h3>Event Discovery</h3>
-      <p>Never miss out — discover and navigate to student events in real time.</p>
-    </div>
-  </section>
+  <main class="flex flex-col pt-20">
 
-  <section class="partners">
-    <h3>Coming Soon To:</h3>
-    <div class="logos">
-      <div>Georgia State University</div>
-      <div>Georgia Tech</div>
-      <div>UGA</div>
-    </div>
-  </section>
+    <!-- Hero -->
+    <header class="fade-in flex flex-col items-center justify-center text-center h-screen px-6 bg-gradient-to-br from-blue-600 to-indigo-600">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Navigate Your Campus Effortlessly</h1>
+      <p class="text-lg md:text-2xl mb-8 max-w-xl">Real-time navigation, accessibility, and events — all in one app.</p>
+      <form id="heroForm" class="w-full max-w-md flex flex-col sm:flex-row gap-4">
+        <input type="email" id="heroEmail" name="email" required placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg text-blue-800">
+        <button type="submit" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">Join Waitlist</button>
+      </form>
+      <p id="heroConfirmation" class="mt-4 text-sm font-medium"></p>
+    </header>
 
-  <div class="slider" role="region" aria-label="Student frustrations and comments">
-    <div class="slide">
-      <p>“Been here for 2 years and I still can’t find CN2101 every time.”</p>
-    </div>
-    <div class="slide">
-      <p>“Missed my club meeting again because I couldn’t find the right event room.”</p>
-    </div>
-    <div class="slide">
-      <p>“Where are the microwaves on this campus?? Seriously.”</p>
-    </div>
-    <div class="slide">
-      <p>“I wish someone would just show me the fastest route to the Financial Aid office.”</p>
-    </div>
-    <div class="slide">
-      <p>“Every semester I struggle to find my classrooms again. Roamio would save me!”</p>
-    </div>
-  </div>
+    <!-- Features -->
+    <section class="fade-in bg-white text-gray-800 py-16">
+      <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-col items-center text-center p-6 border rounded-xl hover:shadow-lg transition">
+          <i class="fas fa-map-marker-alt text-blue-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Real-Time Navigation</h3>
+          <p>Find your classes, events, and facilities across multiple campuses instantly.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6 border rounded-xl hover:shadow-lg transition">
+          <i class="fas fa-wheelchair text-blue-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Accessibility First</h3>
+          <p>We highlight the most accessible routes, including ramps, elevators, and safe paths.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6 border rounded-xl hover:shadow-lg transition">
+          <i class="fas fa-calendar-check text-blue-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Event Discovery</h3>
+          <p>Never miss out — discover and navigate to student events in real time.</p>
+        </div>
+      </div>
+    </section>
 
-  <button class="sticky-button" onclick="document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });">
-    Join Waitlist
-  </button>
+    <!-- Partners -->
+    <section class="fade-in py-16 text-center">
+      <h3 class="text-2xl font-semibold mb-8">Coming Soon To:</h3>
+      <div class="container mx-auto px-6 flex flex-wrap justify-center gap-6">
+        <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full">Georgia State University</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full">Georgia Tech</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full">UGA</span>
+      </div>
+    </section>
 
-  <footer>
+    <!-- Testimonials Slider -->
+    <section class="fade-in bg-indigo-700 py-16">
+      <h4 class="sr-only">Student Frustrations</h4>
+      <div class="overflow-x-auto flex gap-6 px-6 snap-x snap-mandatory">
+        <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
+          “Been here for 2 years and I still can’t find CN2101 every time.”
+        </blockquote>
+        <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
+          “Missed my club meeting again because I couldn’t find the right event room.”
+        </blockquote>
+        <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
+          “Are there any events going on tonight?”
+        </blockquote>
+        <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
+          “I wish someone would just show me the fastest route to the Financial Aid office.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Sticky Button -->
+    <button id="stickyBtn" class="fixed bottom-6 right-6 bg-white text-blue-600 font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">Join Waitlist</button>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="flex justify-center gap-6 py-6 bg-blue-700">
     <a href="mailto:roamio.atl@gmail.com" title="Email Us" aria-label="Email Roamio">
-      <i class="fas fa-envelope"></i>
+      <i class="fas fa-envelope text-white fa-lg"></i>
     </a>
     <a href="https://instagram.com/roamio.atl" target="_blank" title="Follow on Instagram" aria-label="Instagram Page">
-      <i class="fab fa-instagram"></i>
+      <i class="fab fa-instagram text-white fa-lg"></i>
     </a>
   </footer>
 
+  <!-- Scripts -->
   <script>
-    document.getElementById('emailForm').addEventListener('submit', async function (e) {
+    // Hero form handler
+    document.getElementById('heroForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = document.getElementById('emailInput').value;
-
-      const response = await fetch("https://sheetdb.io/api/v1/ozh2aa4b5rh9f", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: [{ email }] })
-      });
-
-      const confirmation = document.getElementById('confirmation');
-      if (response.ok) {
-        confirmation.innerText = "✅ You're on the list! We'll be in touch soon.";
-        confirmation.style.color = 'green';
-      } else {
-        confirmation.innerText = "❌ Something went wrong. Try again later.";
-        confirmation.style.color = 'red';
-      }
+      const email = document.getElementById('heroEmail').value;
+      const res = await fetch('https://sheetdb.io/api/v1/ozh2aa4b5rh9f', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [{ email }] }) });
+      document.getElementById('heroConfirmation').textContent = res.ok ? "✅ You're on the list! We'll be in touch soon." : "❌ Something went wrong. Try again later.";
     });
 
-    // Scroll-triggered animation for waitlist
-    window.addEventListener('scroll', () => {
-      const waitlist = document.getElementById('waitlist');
-      const triggerPoint = window.innerHeight * 0.8;
-      const elementTop = waitlist.getBoundingClientRect().top;
-      if (elementTop < triggerPoint) {
-        waitlist.classList.add('visible');
-      }
-    });
+    // Fade-in observer
+    (function() {
+      const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(entry => entry.target.classList.toggle('visible', entry.isIntersecting)); }, { threshold: 0.3 });
+      document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    })();
+
+    // Sticky button scroll
+    document.getElementById('stickyBtn').onclick = () => { document.getElementById('heroEmail').scrollIntoView({ behavior: 'smooth' }); };
   </script>
 </body>
 </html>
