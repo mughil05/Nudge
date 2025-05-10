@@ -30,18 +30,54 @@
   <style>
     .fade-in { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-float-in { animation: floatIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
   </style>
 </head>
 <body class="font-sans bg-blue-600 text-white antialiased">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full bg-blue-700 bg-opacity-75 backdrop-blur-sm z-50 py-4">
-    <div class="container mx-auto px-6 text-center">
-      <span class="text-white text-xl font-semibold">Roamio</span>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 shadow-sm">
+    <div class="container mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#" class="text-blue-600 font-bold text-xl">Roamio</a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
+          <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+          <a href="#team" class="text-gray-600 hover:text-blue-600 transition">Team</a>
+          <a href="#partners" class="text-gray-600 hover:text-blue-600 transition">Partners</a>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Join Waitlist</button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-gray-600 hover:text-blue-600" id="mobileMenuBtn">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden" id="mobileMenu">
+      <div class="px-6 py-4 space-y-4 bg-white">
+        <a href="#features" class="block text-gray-600 hover:text-blue-600 transition">Features</a>
+        <a href="#about" class="block text-gray-600 hover:text-blue-600 transition">About</a>
+        <a href="#team" class="block text-gray-600 hover:text-blue-600 transition">Team</a>
+        <a href="#partners" class="block text-gray-600 hover:text-blue-600 transition">Partners</a>
+        <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Join Waitlist</button>
+      </div>
     </div>
   </nav>
 
-  <main class="flex flex-col pt-20">
+  <!-- Add padding to account for fixed nav -->
+  <div class="pt-16"></div>
+
+  <main class="flex flex-col">
 
     <!-- Hero -->
     <header class="fade-in flex flex-col items-center justify-center text-center h-screen px-6 bg-gradient-to-br from-blue-600 to-indigo-600">
@@ -55,7 +91,7 @@
     </header>
 
     <!-- Features -->
-    <section class="fade-in bg-white text-gray-800 py-16">
+    <section id="features" class="fade-in bg-white text-gray-800 py-16">
       <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="flex flex-col items-center text-center p-6 border rounded-xl hover:shadow-lg transition">
           <i class="fas fa-map-marker-alt text-blue-600 text-4xl mb-4"></i>
@@ -75,8 +111,153 @@
       </div>
     </section>
 
+    <!-- About Us -->
+    <section id="about" class="fade-in relative overflow-hidden">
+      <!-- Mission Banner -->
+      <div class="relative h-[60vh] min-h-[500px] bg-gradient-to-br from-blue-600 to-indigo-800">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/50"></div>
+        <div class="relative h-full flex items-center justify-center text-center px-6">
+          <div class="max-w-4xl">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Connecting students to the moments that make campus life unforgettable.
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Card -->
+      <div class="bg-white py-20">
+        <div class="container mx-auto px-6">
+          <div class="max-w-3xl mx-auto">
+            <div class="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-lg">
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Our Story</h3>
+              <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                We started as dorm‑room coders who kept missing the best events on campus. One hackathon later, we built an app that surfaces the right experience at the right moment—and opens every door, ramp, and elevator along the way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Us -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
+        <div class="container mx-auto px-6">
+          <h3 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Roamio?</h3>
+          <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-users text-blue-600 text-2xl mr-3"></i>
+                  <h4 class="text-xl font-semibold">Student-Built</h4>
+                </div>
+                <p class="text-gray-600">Because we're students building for students.</p>
+              </div>
+              <div class="bg-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-universal-access text-blue-600 text-2xl mr-3"></i>
+                  <h4 class="text-xl font-semibold">Accessibility First</h4>
+                </div>
+                <p class="text-gray-600">We cherish accessibility and real-time relevance.</p>
+              </div>
+              <div class="bg-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-paint-brush text-blue-600 text-2xl mr-3"></i>
+                  <h4 class="text-xl font-semibold">Clean Design</h4>
+                </div>
+                <p class="text-gray-600">Zero-clutter design that just works.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div id="team" class="bg-white py-20">
+        <div class="container mx-auto px-6">
+          <h3 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Meet the Team</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Ilaria -->
+            <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-user text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold">Ilaria</h4>
+                  <p class="text-blue-600">Founder</p>
+                  <p class="text-sm text-gray-600">Computer Science</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Ilaria scribbled the first wireframes on a pizza box and still commits before coffee.</p>
+            </div>
+
+            <!-- Arya -->
+            <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-user text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold">Arya</h4>
+                  <p class="text-blue-600">Co‑Founder</p>
+                  <p class="text-sm text-gray-600">Computer Science</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Arya believes no bug survives a well‑placed breakpoint—and that campus pizza fuels innovation.</p>
+            </div>
+
+            <!-- Mughil -->
+            <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-user text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold">Mughil</h4>
+                  <p class="text-blue-600">Technical Lead</p>
+                  <p class="text-sm text-gray-600">Computer Science</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Mughil optimizes algorithms for fun and can quote latency stats faster than movie lines.</p>
+            </div>
+
+            <!-- Fawad -->
+            <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-user text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold">Fawad</h4>
+                  <p class="text-blue-600">Technical Lead</p>
+                  <p class="text-sm text-gray-600">Computer Science</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Fawad keeps the architecture clean, the CI green, and the memes flowing in Slack.</p>
+            </div>
+
+            <!-- Carolyn -->
+            <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform hover:scale-105 transition duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-user text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold">Carolyn</h4>
+                  <p class="text-blue-600">Marketing</p>
+                  <p class="text-sm text-gray-600">Law</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Carolyn translates features into stories students actually care about—and keeps us on the right side of the law.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Partners -->
-    <section class="fade-in py-16 text-center">
+    <section id="partners" class="fade-in py-16 text-center">
       <h3 class="text-2xl font-semibold mb-8">Coming Soon To:</h3>
       <div class="container mx-auto px-6 flex flex-wrap justify-center gap-6">
         <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full">Georgia State University</span>
@@ -90,16 +271,16 @@
       <h4 class="sr-only">Student Frustrations</h4>
       <div class="overflow-x-auto flex gap-6 px-6 snap-x snap-mandatory">
         <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
-          “Been here for 2 years and I still can’t find CN2101 every time.”
+          "Been here for 2 years and I still can't find CN2101 every time."
         </blockquote>
         <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
-          “Missed my club meeting again because I couldn’t find the right event room.”
+          "Missed my club meeting again because I couldn't find the right event room."
         </blockquote>
         <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
-          “Are there any events going on tonight?”
+          "Are there any events going on tonight?"
         </blockquote>
         <blockquote class="min-w-[80%] sm:min-w-[40%] bg-white text-gray-800 p-6 rounded-xl shadow snap-center">
-          “I wish someone would just show me the fastest route to the Financial Aid office.”
+          "I wish someone would just show me the fastest route to the Financial Aid office."
         </blockquote>
       </div>
     </section>
@@ -137,6 +318,33 @@
 
     // Sticky button scroll
     document.getElementById('stickyBtn').onclick = () => { document.getElementById('heroEmail').scrollIntoView({ behavior: 'smooth' }); };
+
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
