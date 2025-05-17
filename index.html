@@ -35,6 +35,63 @@
       100% { opacity: 1; transform: translateY(0); }
     }
     .animate-float-in { animation: floatIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+    /* Mobile improvements */
+    @media (max-width: 640px) {
+      .logo-img {
+        width: 70vw !important;
+        max-width: 90vw !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .hero-title {
+        font-size: 2rem !important;
+        line-height: 2.5rem !important;
+      }
+      .hero-desc {
+        font-size: 1rem !important;
+      }
+      .mobile-px {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      .mobile-mb {
+        margin-bottom: 1.5rem !important;
+      }
+      .mobile-full {
+        width: 100% !important;
+      }
+      .hero-section {
+        height: auto !important;
+        min-height: 100vh !important;
+      }
+      .about-mission-banner {
+        min-height: 200px !important;
+        height: auto !important;
+        position: static !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        background: #2563eb !important; /* Use a solid blue background on mobile */
+      }
+      .absolute-mission-bg {
+        display: none !important;
+      }
+      .bg-gradient-to-br {
+        background-size: cover !important;
+      }
+      .py-20, .py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+      .pt-16 {
+        padding-top: 4rem !important;
+      }
+      .pb-32 {
+        padding-bottom: 8rem !important;
+      }
+      #about > * {
+        opacity: 1 !important;
+        display: block !important;
+      }
+    }
   </style>
 </head>
 <body class="font-sans bg-blue-600 text-white antialiased">
@@ -77,15 +134,16 @@
   <!-- Add padding to account for fixed nav -->
   <div class="pt-16"></div>
 
-  <main class="flex flex-col">
+  <main class="flex flex-col pb-32">
 
     <!-- Hero -->
-    <header class="fade-in flex flex-col items-center justify-center text-center h-screen px-6 bg-gradient-to-br from-blue-600 to-indigo-600">
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Navigate Your Campus Effortlessly</h1>
-      <p class="text-lg md:text-2xl mb-8 max-w-xl">Real-time navigation, accessibility, and events — all in one app.</p>
-      <form id="heroForm" class="w-full max-w-md flex flex-col sm:flex-row gap-4">
-        <input type="email" id="heroEmail" name="email" required placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg text-blue-800">
-        <button type="submit" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">Join Waitlist</button>
+    <header class="fade-in flex flex-col items-center justify-center text-center px-6 animated-gradient-bg mobile-px hero-section min-h-screen">
+      <img src="assets/roamio-logo.png" alt="Roamio Logo" class="mb-6 w-96 max-w-full mx-auto drop-shadow-lg rounded-xl logo-img" />
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hero-title">Navigate Your Campus Effortlessly</h1>
+      <p class="text-lg md:text-2xl mb-8 max-w-xl hero-desc">Real-time navigation, accessibility, and events — all in one app.</p>
+      <form id="heroForm" class="w-full max-w-md flex flex-col sm:flex-row gap-4 mobile-full">
+        <input type="email" id="heroEmail" name="email" required placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg text-blue-800 mobile-full">
+        <button type="submit" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition mobile-full">Join Waitlist</button>
       </form>
       <p id="heroConfirmation" class="mt-4 text-sm font-medium"></p>
     </header>
@@ -122,12 +180,11 @@
     </section>
 
     <!-- About Us -->
-    <section id="about" class="fade-in relative overflow-hidden">
+    <section id="about" class="relative">
       <!-- Mission Banner -->
-      <div class="relative h-[60vh] min-h-[500px] bg-gradient-to-br from-blue-600 to-indigo-800">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/50"></div>
-        <div class="relative h-full flex items-center justify-center text-center px-6">
+      <div class="bg-gradient-to-br from-blue-600 to-indigo-800 about-mission-banner">
+        <!-- Overlays removed on mobile for stacking fix -->
+        <div class="flex items-center justify-center text-center px-6" style="position: relative; z-index: 1;">
           <div class="max-w-4xl">
             <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Connecting students to the moments that make campus life unforgettable.
